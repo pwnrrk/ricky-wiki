@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const { default: styled } = require("styled-components");
 
@@ -10,9 +10,10 @@ const Wrapper = styled.nav`
   width: auto;
   z-index: 10;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding: 1rem;
-  box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.9);
 `;
 
 const Brands = styled.div`
@@ -35,8 +36,9 @@ const NavMenu = styled.div`
   justify-content: center;
 `;
 
-const NavLink = styled.div`
+const NavItem = styled.div`
   a {
+    display: inline-block;
     color: var(--font-color);
     text-decoration: none;
     margin: 0 1rem;
@@ -102,18 +104,26 @@ const Navbar = () => (
   <Wrapper>
     <Brands>Ricky Wiki</Brands>
     <NavMenu>
-      <NavLink>
-        <Link to="/">Home</Link>
-      </NavLink>
-      <NavLink>
-        <Link to="/characters">Characters</Link>
-      </NavLink>
-      <NavLink>
-        <Link to="/locations">Locations</Link>
-      </NavLink>
-      <NavLink>
-        <Link to="/episodes">Episodes</Link>
-      </NavLink>
+      <NavItem>
+        <NavLink to="/home" activeClassName="active">
+          Home
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink to="/characters" activeClassName="active">
+          Characters
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink to="/locations" activeClassName="active">
+          Locations
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink to="/episodes" activeClassName="active">
+          Episodes
+        </NavLink>
+      </NavItem>
     </NavMenu>
     <NavSearchWrapper>
       <NavSearch placeholder="Search" />

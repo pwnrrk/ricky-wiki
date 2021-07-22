@@ -10,12 +10,14 @@ const View = styled.div`
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <View>
-        <Routes />
-      </View>
-    </BrowserRouter>
+    <div id="app">
+      <BrowserRouter>
+        <Navbar />
+        <View>
+          <Routes />
+        </View>
+      </BrowserRouter>
+    </div>
   );
 }
 
