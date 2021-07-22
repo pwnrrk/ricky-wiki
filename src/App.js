@@ -1,6 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import styled from "styled-components";
 import "./App.css";
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Routes from "./Routes";
 
@@ -16,6 +17,7 @@ function App() {
         <View>
           <Routes />
         </View>
+        <Footer />
       </BrowserRouter>
     </div>
   );
