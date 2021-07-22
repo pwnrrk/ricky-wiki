@@ -86,6 +86,7 @@ const LogoWrapper = styled.div`
   flex: 0;
   max-width: 1024px;
   padding: 0.5rem;
+  text-align: center;
 `;
 
 const Logo = styled.img`
@@ -114,7 +115,7 @@ class Body extends React.Component {
   };
 
   increaseValue(key, target) {
-    let temp = target-10;
+    let temp = target - 10;
     this.setState({ [key]: temp });
     let interval = setInterval(() => {
       var value = this.state[key];
@@ -137,6 +138,24 @@ class Body extends React.Component {
       <Wrapper>
         <LogoWrapper>
           <Logo src="/logo.png" />
+          <span>
+            Created by{" "}
+            <a
+              href="https://en.wikipedia.org/wiki/Justin_Roiland"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Justin Roiland
+            </a>
+            {" "}and{" "}
+            <a
+              href="https://en.wikipedia.org/wiki/Dan_Harmon"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Dan Harmon
+            </a>
+          </span>
         </LogoWrapper>
         <InfoWrapper>
           <Info>
