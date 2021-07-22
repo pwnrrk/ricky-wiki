@@ -1,11 +1,12 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { DotLoader } from "react-spinners";
 import {
   getCharacterCount,
   getEpisodeCount,
   getLocationCount
 } from "../services";
+
 const LoadingWrapper = styled.div`
   position: fixed;
   top: 0;
@@ -17,6 +18,7 @@ const LoadingWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #000000;
 `;
 
 const LoadingMessage = styled.div`
@@ -27,7 +29,7 @@ const LoadingMessage = styled.div`
   }
 `;
 
-const Loading = (
+const Loading = () => (
   <LoadingWrapper>
     <LoadingMessage>
       <span>Loading</span>
@@ -36,13 +38,33 @@ const Loading = (
   </LoadingWrapper>
 );
 
+const SlideUp = keyframes`
+  from {
+    transform: translateY(150%);
+  }
+  to {
+    transform: translateY(0);
+  }
+`;
+
+const FadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  animation: ${FadeIn} 0.5s ease;
   & > * {
     margin-bottom: 3rem;
+    animation: ${SlideUp} 1s ease;
   }
 `;
 
@@ -84,57 +106,86 @@ const NetflixLogo = styled.img`
   object-fit: contain;
 `;
 
-const Body = props => (
-  <Wrapper>
-    <LogoWrapper>
-      <Logo src="/logo.png" />
-    </LogoWrapper>
-    <InfoWrapper>
-      <Info>
-        <InfoHeader>{props.episode_count}</InfoHeader>
-        <span>Episodes on screen</span>
-      </Info>
-      <Info>
-        <InfoHeader>{props.location_count}</InfoHeader>
-        <span>Locations Travelled</span>
-      </Info>
-      <Info>
-        <InfoHeader>{props.character_count}</InfoHeader>
-        <span>Characters Created</span>
-      </Info>
-    </InfoWrapper>
-    <NetflixLink
-      href="https://www.netflix.com/th-en/title/80014749"
-      rel="noreferrer"
-      target="_blank"
-    >
-      Available on
-      <div>
-        <NetflixLogo src="/Netflix_icon.png" />
-      </div>
-    </NetflixLink>
-    <InfoWrapper>
-      <Info>
-        <a
-          href="https://www.imdb.com/title/tt2861424/"
-          target="_blank"
+class Body extends React.Component {
+  state = {
+    character_count: 0,
+    episode_count: 0,
+    location_count: 0
+  };
+
+  increaseValue(key, target) {
+    let temp = target-10;
+    this.setState({ [key]: temp });
+    let interval = setInterval(() => {
+      var value = this.state[key];
+      if (value === target) {
+        clearInterval(interval);
+        return;
+      }
+      value++;
+      this.setState({ [key]: value });
+    }, 100);
+  }
+
+  componentDidMount() {
+    this.increaseValue("character_count", this.props.character_count);
+    this.increaseValue("episode_count", this.props.episode_count);
+    this.increaseValue("location_count", this.props.location_count);
+  }
+  render() {
+    return (
+      <Wrapper>
+        <LogoWrapper>
+          <Logo src="/logo.png" />
+        </LogoWrapper>
+        <InfoWrapper>
+          <Info>
+            <InfoHeader>{this.state.episode_count}</InfoHeader>
+            <span>Episodes on screen</span>
+          </Info>
+          <Info>
+            <InfoHeader>{this.state.location_count}</InfoHeader>
+            <span>Locations Travelled</span>
+          </Info>
+          <Info>
+            <InfoHeader>{this.state.character_count}</InfoHeader>
+            <span>Characters Created</span>
+          </Info>
+        </InfoWrapper>
+        <NetflixLink
+          href="https://www.netflix.com/th-en/title/80014749"
           rel="noreferrer"
-        >
-          9.2/10 IMDb
-        </a>
-      </Info>
-      <Info>
-        <a
-          href="https://www.rottentomatoes.com/tv/rick_and_morty"
           target="_blank"
-          rel="noreferrer"
         >
-          95% Rotten Tomatoes
-        </a>
-      </Info>
-    </InfoWrapper>
-  </Wrapper>
-);
+          Available on
+          <div>
+            <NetflixLogo src="/Netflix_icon.png" />
+          </div>
+        </NetflixLink>
+        <InfoWrapper>
+          <Info>
+            <a
+              href="https://www.imdb.com/title/tt2861424/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              9.2/10 IMDb
+            </a>
+          </Info>
+          <Info>
+            <a
+              href="https://www.rottentomatoes.com/tv/rick_and_morty"
+              target="_blank"
+              rel="noreferrer"
+            >
+              95% Rotten Tomatoes
+            </a>
+          </Info>
+        </InfoWrapper>
+      </Wrapper>
+    );
+  }
+}
 
 class Home extends React.Component {
   state = {
@@ -166,7 +217,7 @@ class Home extends React.Component {
         />
       );
     } else {
-      return Loading;
+      return <Loading />;
     }
   }
 }
