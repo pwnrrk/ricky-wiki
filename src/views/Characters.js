@@ -7,7 +7,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Loading from "../components/Loading";
-import { FadeIn } from "../helpers/Animation";
+import { FadeIn } from "../utils/Animation";
 import { getCharacters } from "../services";
 
 const Wrapper = styled.div`

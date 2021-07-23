@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Loading from "../components/Loading";
-import { FadeIn, SlideUp } from "../helpers/Animation";
+import { FadeIn, SlideUp } from "../utils/Animation";
 import {
   getCharacterCount,
   getEpisodeCount,
