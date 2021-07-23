@@ -6,7 +6,14 @@ import Locations from "./views/Locations";
 
 const Routes = () => (
   <Switch>
-    <Route path="/characters" component={Characters} />
+    <Route
+      exact
+      path="/characters"
+      render={() => {
+        return <Redirect to="/characters/page/1" />;
+      }}
+    />
+    <Route path="/characters/page/*" component={Characters} />
     <Route path="/locations" component={Locations} />
     <Route path="/episodes" component={Episodes} />
     <Route path="/home" component={Home} />
