@@ -7,7 +7,7 @@ import Locations from "./views/Locations";
 
 const CharacterChild = () => <Characters page={useParams().page} />;
 const CharacterDetailChild = () => <CharacterDetail id={useParams().id} />;
-
+const LocationChild = () => <Locations  page={useParams().page}/>
 export default function Routes() {
   return (
     <Switch>
@@ -16,7 +16,7 @@ export default function Routes() {
         path="/characters/detail/:id"
         children={<CharacterDetailChild />}
       />
-      <Route path="/locations" component={Locations} />
+      <Route path="/locations/page/:page" children={<LocationChild/>} />
       <Route path="/episodes" component={Episodes} />
       <Route path="/home" component={Home} />
       <Route
@@ -24,6 +24,13 @@ export default function Routes() {
         path="/characters"
         render={() => {
           return <Redirect to="/characters/page/1" />;
+        }}
+      />
+      <Route
+        exact
+        path="/locations"
+        render={() => {
+          return <Redirect to="/locations/page/1" />;
         }}
       />
       <Route
