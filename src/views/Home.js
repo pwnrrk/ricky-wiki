@@ -158,7 +158,7 @@ class Body extends React.Component {
   }
 }
 
-class Home extends React.Component {
+export default class Home extends React.Component {
   state = {
     ready: false,
     character_count: 0,
@@ -192,5 +192,3 @@ class Home extends React.Component {
     }
   }
 }
-
-export default Home;

@@ -5,8 +5,10 @@ import API from "./Api";
  * @returns {Number} amount of character
  */
 export async function getCharacterCount() {
-  const { data } = await API.get("/character");
-  return data ? data.info.count : 0;
+  const response = await API.get("/character");
+  return response.status === 200
+    ? response.data.info.count
+    : { error: response.statusText };
 }
 /**
  *
@@ -16,6 +18,19 @@ export async function getCharacterCount() {
 export async function getCharacters(page) {
   var query = "";
   if (page) query += `/?page=${page}`;
-  const { data } = await API.get(`/character${query}`);
-  return data ? data : {};
+  const response = await API.get(`/character${query}`);
+  return response.status === 200
+    ? response.data
+    : { error: response.statusText };
+}
+/**
+ *
+ * @param {Number | String} id Character ID
+ * @returns {object} Character data
+ */
+export async function getCharacterDetail(id) {
+  const response = await API.get(`/character/${id}`);
+  return response.status === 200
+    ? response.data
+    : { error: response.statusText };
 }

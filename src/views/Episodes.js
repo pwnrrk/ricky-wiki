@@ -1,3 +1,3 @@
-const Episodes = () => (<div>Episodes</div>);
+import React from "react";
 
-export default Episodes;
+export default class Episodes extends React.Component {}

@@ -91,7 +91,7 @@ const PageLink = styled.div`
     text-decoration: none;
   }
 `;
-class Characters extends React.Component {
+export default class Characters extends React.Component {
   state = {
     ready: false
   };
@@ -106,24 +106,24 @@ class Characters extends React.Component {
     this.data = data;
     CharacterColumns = data.results.map(character => (
       <CharacterColumn key={character.id}>
-          <Link to="/characters/detail">
-            <CharacterContent>
-              <CharacterImage src={character.image} />
-              <CharacterInfo>
-                <CharacterName>{character.name}</CharacterName>
-                <div>
-                  Status:{" "}
-                  <CharacterStatus status={character.status}>
-                    {character.status}
-                  </CharacterStatus>
-                </div>
-                <span>Species: {character.species}</span>
-                <span>Gender: {character.gender}</span>
-                <span>Type: {character.type ? character.type : "Normal"}</span>
-                <span>Origin: {character.origin.name}</span>
-              </CharacterInfo>
-            </CharacterContent>
-          </Link>
+        <Link to="/characters/detail">
+          <CharacterContent>
+            <CharacterImage src={character.image} />
+            <CharacterInfo>
+              <CharacterName>{character.name}</CharacterName>
+              <div>
+                Status:{" "}
+                <CharacterStatus status={character.status}>
+                  {character.status}
+                </CharacterStatus>
+              </div>
+              <span>Species: {character.species}</span>
+              <span>Gender: {character.gender}</span>
+              <span>Type: {character.type ? character.type : "Normal"}</span>
+              <span>Origin: {character.origin.name}</span>
+            </CharacterInfo>
+          </CharacterContent>
+        </Link>
       </CharacterColumn>
     ));
     this.setState({ ready: true });
@@ -138,7 +138,7 @@ class Characters extends React.Component {
       this.getData();
     }
   }
-  
+
   render() {
     if (this.state.ready) {
       let PageLinks = [];
@@ -196,4 +196,3 @@ class Characters extends React.Component {
     return <Loading />;
   }
 }
-export default Characters;

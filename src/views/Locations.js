@@ -1,3 +1,3 @@
-const Locations = () => (<div>Locations</div>);
+import React from "react";
 
-export default Locations;
+export default class Locations extends React.Component{}
