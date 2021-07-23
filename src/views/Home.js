@@ -1,29 +1,12 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import Loading from "../components/Loading";
+import { FadeIn, SlideUp } from "../helpers/Animation";
 import {
   getCharacterCount,
   getEpisodeCount,
   getLocationCount
 } from "../services";
-
-const SlideUp = keyframes`
-  from {
-    transform: translateY(150%);
-  }
-  to {
-    transform: translateY(0);
-  }
-`;
-
-const FadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-`;
 
 const Wrapper = styled.div`
   display: flex;
