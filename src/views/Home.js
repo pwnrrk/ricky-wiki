@@ -115,7 +115,7 @@ class Body extends React.Component {
   };
 
   increaseValue(key, target) {
-    let temp = target - 10;
+    let temp = target - 20;
     this.setState({ [key]: temp });
     let interval = setInterval(() => {
       var value = this.state[key];
@@ -125,7 +125,7 @@ class Body extends React.Component {
       }
       value++;
       this.setState({ [key]: value });
-    }, 100);
+    }, 70);
   }
 
   componentDidMount() {
