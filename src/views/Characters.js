@@ -9,10 +9,9 @@ import styled from "styled-components";
 import Loading from "../components/Loading";
 import { FadeIn } from "../utils/Animation";
 import { getCharacters } from "../services";
+import { Container } from "../utils/Elements";
 
-const Wrapper = styled.div`
-  max-width: 1140px;
-  margin: auto;
+const Wrapper = styled(Container)`
   animation: ${FadeIn} 0.3s ease;
 `;
 
@@ -105,8 +104,8 @@ export default class Characters extends React.Component {
     const data = await getCharacters(this.page);
     this.data = data;
     CharacterColumns = data.results.map(character => (
-      <CharacterColumn key={character.id}>
-        <Link to="/characters/detail">
+      <CharacterColumn key={`${character.id}-card`}>
+        <Link to={`/characters/detail/${character.id}`}>
           <CharacterContent>
             <CharacterImage src={character.image} />
             <CharacterInfo>

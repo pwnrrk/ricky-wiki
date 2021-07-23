@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { Button } from "../utils/Elements";
 
 const { default: styled } = require("styled-components");
 
@@ -83,23 +84,6 @@ const NavSearch = styled.input`
   }
 `;
 
-const SearchButton = styled.button`
-  padding: 0.5rem 1.5rem;
-  margin: 0 0.5rem;
-  color: var(--font-color);
-  border: 1px solid transparent;
-  background-color: var(--primary);
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: background-color 0.25s ease-out;
-  &:focus {
-    outline: none;
-  }
-  &:hover {
-    background-color: var(--primary-dark);
-  }
-`;
-
 const Navbar = () => (
   <Wrapper>
     <Brands>Ricky Wiki</Brands>
@@ -127,7 +111,7 @@ const Navbar = () => (
     </NavMenu>
     <NavSearchWrapper>
       <NavSearch placeholder="Search" />
-      <SearchButton>Search</SearchButton>
+      <Button>Search</Button>
     </NavSearchWrapper>
   </Wrapper>
 );
