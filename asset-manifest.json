@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/ricky-wiki/static/css/main.758fcf55.chunk.css",
-    "main.js": "/ricky-wiki/static/js/main.be3094a4.chunk.js",
-    "main.js.map": "/ricky-wiki/static/js/main.be3094a4.chunk.js.map",
+    "main.js": "/ricky-wiki/static/js/main.6b98e954.chunk.js",
+    "main.js.map": "/ricky-wiki/static/js/main.6b98e954.chunk.js.map",
     "runtime-main.js": "/ricky-wiki/static/js/runtime-main.36fcd10f.js",
     "runtime-main.js.map": "/ricky-wiki/static/js/runtime-main.36fcd10f.js.map",
     "static/js/2.1dcd871a.chunk.js": "/ricky-wiki/static/js/2.1dcd871a.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.36fcd10f.js",
     "static/js/2.1dcd871a.chunk.js",
     "static/css/main.758fcf55.chunk.css",
-    "static/js/main.be3094a4.chunk.js"
+    "static/js/main.6b98e954.chunk.js"
   ]
 }
