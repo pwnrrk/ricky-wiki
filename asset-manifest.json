@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/ricky-wiki/static/css/main.758fcf55.chunk.css",
+    "main.js": "/ricky-wiki/static/js/main.be3094a4.chunk.js",
+    "main.js.map": "/ricky-wiki/static/js/main.be3094a4.chunk.js.map",
+    "runtime-main.js": "/ricky-wiki/static/js/runtime-main.36fcd10f.js",
+    "runtime-main.js.map": "/ricky-wiki/static/js/runtime-main.36fcd10f.js.map",
+    "static/js/2.1dcd871a.chunk.js": "/ricky-wiki/static/js/2.1dcd871a.chunk.js",
+    "static/js/2.1dcd871a.chunk.js.map": "/ricky-wiki/static/js/2.1dcd871a.chunk.js.map",
+    "static/js/3.32e331c4.chunk.js": "/ricky-wiki/static/js/3.32e331c4.chunk.js",
+    "static/js/3.32e331c4.chunk.js.map": "/ricky-wiki/static/js/3.32e331c4.chunk.js.map",
+    "index.html": "/ricky-wiki/index.html",
+    "static/css/main.758fcf55.chunk.css.map": "/ricky-wiki/static/css/main.758fcf55.chunk.css.map",
+    "static/js/2.1dcd871a.chunk.js.LICENSE.txt": "/ricky-wiki/static/js/2.1dcd871a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.36fcd10f.js",
+    "static/js/2.1dcd871a.chunk.js",
+    "static/css/main.758fcf55.chunk.css",
+    "static/js/main.be3094a4.chunk.js"
+  ]
+}
