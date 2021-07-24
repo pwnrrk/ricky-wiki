@@ -1,4 +1,3 @@
-import { BrowserRouter } from "react-router-dom";
 import styled from "styled-components";
 import "./App.css";
 import Footer from "./components/Footer";
@@ -12,13 +11,11 @@ const View = styled.div`
 function App() {
   return (
     <div id="app">
-      <BrowserRouter>
-        <Navbar />
-        <View>
-          <Routes />
-        </View>
-        <Footer />
-      </BrowserRouter>
+      <Navbar />
+      <View>
+        <Routes />
+      </View>
+      <Footer />
     </div>
   );
 }
