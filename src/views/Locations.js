@@ -26,7 +26,6 @@ const LocationColumn = styled.div`
   margin: 1rem;
   border-radius: 0.5rem;
   background-color: #2b2b2b;
-  cursor: pointer;
   transition: all 0.25s ease;
   a {
     text-decoration: none;
@@ -90,15 +89,13 @@ export default class Locations extends React.Component {
     this.data = data;
     LocationColumns = data.results.map(location => (
       <LocationColumn key={`${location.id}-card`}>
-        <Link to={`/locations/detail/${location.id}`}>
-          <LocationContent>
-            <LocationInfo>
-              <LocationName>{location.name}</LocationName>
-              <span>Type: {location.type}</span>
-              <span>Dimension: {location.dimension}</span>
-            </LocationInfo>
-          </LocationContent>
-        </Link>
+        <LocationContent>
+          <LocationInfo>
+            <LocationName>{location.name}</LocationName>
+            <span>Type: {location.type}</span>
+            <span>Dimension: {location.dimension}</span>
+          </LocationInfo>
+        </LocationContent>
       </LocationColumn>
     ));
     this.setState({ ready: true });
