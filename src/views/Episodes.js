@@ -43,8 +43,8 @@ export default class Episodes extends React.Component {
         <ColumnContent>
           <Info>
             <InfoHeader>{episode.name}</InfoHeader>
-            <span>Type: {episode.type}</span>
-            <span>Dimension: {episode.dimension}</span>
+            <span>Episode: {episode.episode}</span>
+            <span>Air date: {episode.air_date}</span>
           </Info>
         </ColumnContent>
       </Column>
