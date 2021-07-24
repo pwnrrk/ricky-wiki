@@ -9,60 +9,24 @@ import styled from "styled-components";
 import Loading from "../components/Loading";
 import { FadeIn } from "../utils/Animation";
 import { getCharacters } from "../services";
-import { Container } from "../utils/Elements";
+import {
+  Column,
+  ColumnContent,
+  Container,
+  Info,
+  InfoHeader,
+  PageLink,
+  Pager,
+  Row
+} from "../utils/Elements";
 
 const Wrapper = styled(Container)`
   animation: ${FadeIn} 0.3s ease;
 `;
 
-const CharacterRow = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin: -1rem;
-`;
-
-const CharacterColumn = styled.div`
-  flex: 1 1 40%;
-  margin: 1rem;
-  border-radius: 0.5rem;
-  background-color: #2b2b2b;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  &:hover {
-    transform: scale(1.1);
-  }
-`;
-
-const CharacterContent = styled.div`
-  display: flex;
-  padding: 1rem;
-  line-height: 1.5;
-  & > * {
-    padding: 0 0.25rem;
-  }
-`;
-
 const CharacterImage = styled.img`
   width: 128px;
   height: 128px;
-`;
-
-const CharacterInfo = styled.div`
-  flex: 1 1;
-  display: flex;
-  flex-direction: column;
-  font-size: 0.7rem;
-  line-height: 1.5;
-`;
-
-const CharacterName = styled.span`
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--primary);
 `;
 
 const statusColor = {
@@ -76,20 +40,6 @@ const CharacterStatus = styled.span`
 `;
 
 let CharacterColumns = null;
-
-const CharacterPager = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 1rem;
-`;
-
-const PageLink = styled.div`
-  padding: 0 0.25rem;
-  a:not(.active) {
-    color: inherit;
-    text-decoration: none;
-  }
-`;
 export default class Characters extends React.Component {
   state = {
     ready: false
@@ -104,12 +54,12 @@ export default class Characters extends React.Component {
     const data = await getCharacters(this.page);
     this.data = data;
     CharacterColumns = data.results.map(character => (
-      <CharacterColumn key={`${character.id}-card`}>
+      <Column key={`${character.id}-card`}>
         <Link to={`/characters/detail/${character.id}`}>
-          <CharacterContent>
+          <ColumnContent>
             <CharacterImage src={character.image} />
-            <CharacterInfo>
-              <CharacterName>{character.name}</CharacterName>
+            <Info>
+              <InfoHeader>{character.name}</InfoHeader>
               <div>
                 Status:{" "}
                 <CharacterStatus status={character.status}>
@@ -120,10 +70,10 @@ export default class Characters extends React.Component {
               <span>Gender: {character.gender}</span>
               <span>Type: {character.type ? character.type : "Normal"}</span>
               <span>Origin: {character.origin.name}</span>
-            </CharacterInfo>
-          </CharacterContent>
+            </Info>
+          </ColumnContent>
         </Link>
-      </CharacterColumn>
+      </Column>
     ));
     this.setState({ ready: true });
   }
@@ -160,9 +110,9 @@ export default class Characters extends React.Component {
       return (
         <div>
           <Wrapper>
-            <CharacterRow>{CharacterColumns}</CharacterRow>
+            <Row>{CharacterColumns}</Row>
           </Wrapper>
-          <CharacterPager>
+          <Pager>
             <PageLink hidden={this.page > 1 ? false : true}>
               <Link to={`/characters/page/${this.page - 1}`}>
                 <FontAwesomeIcon icon={faChevronLeft} />
@@ -188,7 +138,7 @@ export default class Characters extends React.Component {
                 <FontAwesomeIcon icon={faChevronRight} />
               </Link>
             </PageLink>
-          </CharacterPager>
+          </Pager>
         </div>
       );
     }

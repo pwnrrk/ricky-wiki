@@ -9,71 +9,23 @@ import styled from "styled-components";
 import Loading from "../components/Loading";
 import { FadeIn } from "../utils/Animation";
 import { getLocations } from "../services";
-import { Container } from "../utils/Elements";
+import {
+  Column,
+  ColumnContent,
+  Container,
+  Info,
+  InfoHeader,
+  PageLink,
+  Pager,
+  Row
+} from "../utils/Elements";
 
 const Wrapper = styled(Container)`
   animation: ${FadeIn} 0.3s ease;
 `;
 
-const LocationRow = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin: -1rem;
-`;
-
-const LocationColumn = styled.div`
-  flex: 1 1 40%;
-  margin: 1rem;
-  border-radius: 0.5rem;
-  background-color: #2b2b2b;
-  transition: all 0.25s ease;
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  &:hover {
-    transform: scale(1.1);
-  }
-`;
-
-const LocationContent = styled.div`
-  display: flex;
-  padding: 1rem;
-  line-height: 1.5;
-  & > * {
-    padding: 0 0.25rem;
-  }
-`;
-
-const LocationInfo = styled.div`
-  flex: 1 1;
-  display: flex;
-  flex-direction: column;
-  font-size: 0.7rem;
-  line-height: 1.5;
-`;
-
-const LocationName = styled.span`
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--primary);
-`;
-
 let LocationColumns = null;
 
-const Pager = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 1rem;
-`;
-
-const PageLink = styled.div`
-  padding: 0 0.25rem;
-  a:not(.active) {
-    color: inherit;
-    text-decoration: none;
-  }
-`;
 export default class Locations extends React.Component {
   state = {
     ready: false
@@ -88,15 +40,15 @@ export default class Locations extends React.Component {
     const data = await getLocations(this.page);
     this.data = data;
     LocationColumns = data.results.map(location => (
-      <LocationColumn key={`${location.id}-card`}>
-        <LocationContent>
-          <LocationInfo>
-            <LocationName>{location.name}</LocationName>
+      <Column key={`${location.id}-card`}>
+        <ColumnContent>
+          <Info>
+            <InfoHeader>{location.name}</InfoHeader>
             <span>Type: {location.type}</span>
             <span>Dimension: {location.dimension}</span>
-          </LocationInfo>
-        </LocationContent>
-      </LocationColumn>
+          </Info>
+        </ColumnContent>
+      </Column>
     ));
     this.setState({ ready: true });
   }
@@ -138,7 +90,7 @@ export default class Locations extends React.Component {
       return (
         <div>
           <Wrapper>
-            <LocationRow>{LocationColumns}</LocationRow>
+            <Row>{LocationColumns}</Row>
           </Wrapper>
           <Pager>
             <PageLink hidden={this.page > 1 ? false : true}>
