@@ -8,7 +8,7 @@ import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Loading from "../components/Loading";
 import { FadeIn } from "../utils/Animation";
-import { getLocations } from "../services";
+import { getEpisodes } from "../services";
 import {
   Column,
   ColumnContent,
@@ -24,7 +24,7 @@ const Wrapper = styled(Container)`
   animation: ${FadeIn} 0.3s ease;
 `;
 
-let LocationColumns = null;
+let EpisodeColumns = null;
 export default class Episodes extends React.Component {
   state = {
     ready: false
@@ -36,15 +36,15 @@ export default class Episodes extends React.Component {
   async getData() {
     this.page = parseInt(this.props.page);
     this.setState({ ready: false });
-    const data = await getLocations(this.page);
+    const data = await getEpisodes(this.page);
     this.data = data;
-    LocationColumns = data.results.map(location => (
-      <Column key={`${location.id}-card`}>
+    EpisodeColumns = data.results.map(episode => (
+      <Column key={`${episode.id}-card`}>
         <ColumnContent>
           <Info>
-            <InfoHeader>{location.name}</InfoHeader>
-            <span>Type: {location.type}</span>
-            <span>Dimension: {location.dimension}</span>
+            <InfoHeader>{episode.name}</InfoHeader>
+            <span>Type: {episode.type}</span>
+            <span>Dimension: {episode.dimension}</span>
           </Info>
         </ColumnContent>
       </Column>
@@ -68,7 +68,7 @@ export default class Episodes extends React.Component {
       for (let index = 1; index <= this.data.info.pages; index++) {
         PageLinks.push(
           <Pager key={`page-${index}`}>
-            <NavLink activeClassName="active" to={`/locations/page/${index}`}>
+            <NavLink activeClassName="active" to={`/episodes/page/${index}`}>
               {index}
             </NavLink>
           </Pager>
@@ -89,11 +89,11 @@ export default class Episodes extends React.Component {
       return (
         <div>
           <Wrapper>
-            <Row>{LocationColumns}</Row>
+            <Row>{EpisodeColumns}</Row>
           </Wrapper>
           <Pager>
             <PageLink hidden={this.page > 1 ? false : true}>
-              <Link to={`/locations/page/${this.page - 1}`}>
+              <Link to={`/episodes/page/${this.page - 1}`}>
                 <FontAwesomeIcon icon={faChevronLeft} />
               </Link>
             </PageLink>
@@ -106,14 +106,14 @@ export default class Episodes extends React.Component {
             <PageLink
               hidden={this.maxPage >= this.data.info.pages ? true : false}
             >
-              <Link to={`/locations/page/${this.data.info.pages}`}>
+              <Link to={`/episodes/page/${this.data.info.pages}`}>
                 {this.data.info.pages}
               </Link>
             </PageLink>
             <PageLink
               hidden={this.maxPage >= this.data.info.pages ? true : false}
             >
-              <Link to={`/locations/page/${this.page + 1}`}>
+              <Link to={`/episodes/page/${this.page + 1}`}>
                 <FontAwesomeIcon icon={faChevronRight} />
               </Link>
             </PageLink>
