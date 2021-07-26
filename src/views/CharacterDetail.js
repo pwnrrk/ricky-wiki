@@ -39,6 +39,11 @@ export default class CharacterDetail extends React.Component {
   componentDidMount() {
     this.getData();
   }
+  componentDidUpdate(prevProps) {
+    if (prevProps.id !== this.props.id) {
+      this.getData();
+    }
+  }
   render() {
     if (this.state.ready) {
       return (
