@@ -1,10 +1,12 @@
 {
   "configurations": [
     {
-      "type": "pwa-chrome",
-      "name": "http://localhost:3000",
+      "type": "firefox",
       "request": "launch",
-      "url": "http://localhost:3000"
+      "reAttach": true,
+      "name": "Launch localhost",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}"
     }
   ]
 }
