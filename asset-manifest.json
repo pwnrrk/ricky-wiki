@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/ricky-wiki/static/css/main.758fcf55.chunk.css",
-    "main.js": "/ricky-wiki/static/js/main.3f2bda55.chunk.js",
-    "main.js.map": "/ricky-wiki/static/js/main.3f2bda55.chunk.js.map",
+    "main.js": "/ricky-wiki/static/js/main.e801deae.chunk.js",
+    "main.js.map": "/ricky-wiki/static/js/main.e801deae.chunk.js.map",
     "runtime-main.js": "/ricky-wiki/static/js/runtime-main.cdcc45aa.js",
     "runtime-main.js.map": "/ricky-wiki/static/js/runtime-main.cdcc45aa.js.map",
-    "static/js/2.bfc361b6.chunk.js": "/ricky-wiki/static/js/2.bfc361b6.chunk.js",
-    "static/js/2.bfc361b6.chunk.js.map": "/ricky-wiki/static/js/2.bfc361b6.chunk.js.map",
+    "static/js/2.3e1fbd09.chunk.js": "/ricky-wiki/static/js/2.3e1fbd09.chunk.js",
+    "static/js/2.3e1fbd09.chunk.js.map": "/ricky-wiki/static/js/2.3e1fbd09.chunk.js.map",
     "static/js/3.8aa6b31a.chunk.js": "/ricky-wiki/static/js/3.8aa6b31a.chunk.js",
     "static/js/3.8aa6b31a.chunk.js.map": "/ricky-wiki/static/js/3.8aa6b31a.chunk.js.map",
     "index.html": "/ricky-wiki/index.html",
     "static/css/main.758fcf55.chunk.css.map": "/ricky-wiki/static/css/main.758fcf55.chunk.css.map",
-    "static/js/2.bfc361b6.chunk.js.LICENSE.txt": "/ricky-wiki/static/js/2.bfc361b6.chunk.js.LICENSE.txt"
+    "static/js/2.3e1fbd09.chunk.js.LICENSE.txt": "/ricky-wiki/static/js/2.3e1fbd09.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.cdcc45aa.js",
-    "static/js/2.bfc361b6.chunk.js",
+    "static/js/2.3e1fbd09.chunk.js",
     "static/css/main.758fcf55.chunk.css",
-    "static/js/main.3f2bda55.chunk.js"
+    "static/js/main.e801deae.chunk.js"
   ]
 }
