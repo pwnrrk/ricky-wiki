@@ -140,6 +140,7 @@ export default class Navbar extends React.Component {
     this.search = this.search.bind(this);
     this.getInput = this.getInput.bind(this);
     this.clearList = this.clearList.bind(this);
+    this.onBlurHandle = this.onBlurHandle.bind(this);
   }
   async search() {
     this.setState({ loading: true });
@@ -152,7 +153,7 @@ export default class Navbar extends React.Component {
     }
     let NavSearchListItems = request.results.map(result => (
       <NavSearchListItem key={`result-${result.id}`}>
-        <Link to={`/characters/detail/${result.id}`} onClick={this.clearList}>
+        <Link to={`/characters/detail/${result.id}`}>
           <img src={result.image} alt={`${result.name}-avatar`} />
           <span>{result.name}</span>
         </Link>
@@ -162,6 +163,11 @@ export default class Navbar extends React.Component {
   }
   clearList() {
     this.setState({ NavSearchListItems: null });
+  }
+  onBlurHandle() {
+    setTimeout(() => {
+      this.clearList();
+    }, 100);
   }
   getInput() {
     return new Promise(resolve => {
@@ -216,7 +222,7 @@ export default class Navbar extends React.Component {
             <NavSearch
               ref={this.searchBox}
               onInput={this.search}
-              onBlur={this.clearList}
+              onBlur={this.onBlurHandle}
               placeholder="Search"
             />
             <NavSearchList>{this.state.NavSearchListItems}</NavSearchList>
